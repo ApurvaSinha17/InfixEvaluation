@@ -21,7 +21,7 @@ public class Evaluator {
 			else{
 				if(operatorStack.isEmpty())
 					operatorStack.push(str);
-				else if(str.equals("(") || operandStack.peek().equals("("))
+				else if(str.equals("(") || operatorStack.peek().equals("("))
 					operatorStack.push(str);
 				else if(str.equals(")")){
 					while(!operatorStack.peek().equals("(")){
@@ -51,8 +51,8 @@ public class Evaluator {
 		double operand1 = Double.parseDouble(operandStack.pop());
 		String operator = operatorStack.pop();
 		double result = calculate(operand1, operand2, operator);
-		System.out.println(operand1+" "+operator+" "+operand2);
-		System.out.println(Double.toString(result));
+		//System.out.println(operand1+" "+operator+" "+operand2);
+		//System.out.println(Double.toString(result));
 		operandStack.push(Double.toString(result));			
 	}
 	
