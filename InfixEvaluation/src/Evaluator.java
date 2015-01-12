@@ -50,13 +50,19 @@ public class Evaluator {
 		double operand2 = Double.parseDouble(operandStack.pop());
 		double operand1 = Double.parseDouble(operandStack.pop());
 		String operator = operatorStack.pop();
-		double result = calculate(operand1, operand2, operator);
+		double result;
+		try {
+			result = calculate(operand1, operand2, operator);
+			operandStack.push(Double.toString(result));	
+		} catch (ArithmeticException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//System.out.println(operand1+" "+operator+" "+operand2);
-		//System.out.println(Double.toString(result));
-		operandStack.push(Double.toString(result));			
+		//System.out.println(Double.toString(result));				
 	}
 	
-	private static Double calculate(Double op1, Double op2, String str){
+	private static Double calculate(Double op1, Double op2, String str) throws ArithmeticException{
 		
 		switch(str){
 		
