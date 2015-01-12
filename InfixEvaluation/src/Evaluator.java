@@ -13,7 +13,7 @@ public class Evaluator {
 					Double operand = Double.parseDouble(str);
 					operandStack.push(Double.toString(operand));
 				} catch (NumberFormatException e) {
-					System.out.println("Not a valid operator");
+					System.out.println("Not a valid number");
 					e.printStackTrace();
 					System.exit(0);
 				}				
