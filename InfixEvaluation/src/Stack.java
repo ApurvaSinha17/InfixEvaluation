@@ -1,7 +1,7 @@
 
 public class Stack {
 
-	private String[] operatorStack = new String[1];	
+	private String[] originalArray = new String[1];	
 	private String[] tempArray = null;
 	private int top = -1;
 	
@@ -9,20 +9,20 @@ public class Stack {
 		
 		tempArray = new String[newCapacity];
 		for(int i=0;i<=top;i++)
-			tempArray[i] = operatorStack[i];
-		operatorStack = tempArray;
+			tempArray[i] = originalArray[i];
+		originalArray = tempArray;
 	}
 	
 	public String peek(){
 		
-		return operatorStack[top];
+		return originalArray[top];
 	}
 	
 	public void push(String str){
 		
-		if(top == operatorStack.length - 1)
-			resizeStack(operatorStack.length * 2);
-		operatorStack[++top] = str;
+		if(top == originalArray.length - 1)
+			resizeStack(originalArray.length * 2);
+		originalArray[++top] = str;
 	}
 	
 	public String pop(){
@@ -32,11 +32,11 @@ public class Stack {
 			System.exit(0);
 		}
 		
-		if(top < operatorStack.length/4)
-			resizeStack(operatorStack.length / 2);
+		if(top < originalArray.length/4)
+			resizeStack(originalArray.length / 2);
 		
-		String str = operatorStack[top]; 
-		operatorStack[top] = null;
+		String str = originalArray[top]; 
+		originalArray[top] = null;
 		top--;
 		return str;
 	}
